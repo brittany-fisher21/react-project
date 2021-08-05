@@ -1,13 +1,16 @@
+import React from "react";
 import "./App.css";
-import AdventureApp from "./components/AdventureApp";
+import TodaysWeather from "./components/TodaysWeather";
 import DailyWeather from "./components/DailyWeather";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to the Adventure App! Enjoy your journey</h1>
-      <AdventureApp />
+      <h1>Welcome to the weather app</h1>
+      <TodaysWeather />
       <DailyWeather />
+      <Home />
     </div>
   );
 }

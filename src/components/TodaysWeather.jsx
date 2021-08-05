@@ -14,7 +14,7 @@ class TodaysWeather extends Component {
 
   _fetchToday = async () => {
     const response = await fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=atlanta&units=imperial&appid=c63843e773c335366c8af357b13b226a"
+      "https://api.openweathermap.org/data/2.5/weather?q=atlanta,ga,us&units=imperial&appid=c63843e773c335366c8af357b13b226a"
     ).then((response) => response.json());
 
     this.setState({
@@ -28,12 +28,10 @@ class TodaysWeather extends Component {
     const { Today } = this.state;
     return (
       <>
-        <button type="button" onClick={this._fetchToday}>
-          Forecast
-        </button>
-        {!!Today ? (
+        {Today !== null ? (
           <div>
             <h3>{Today.name}</h3>
+            {Today.main.temp}
             {Today.weather.map((data) => {
               return <p key={data.description}>{data.description}</p>;
             })}
