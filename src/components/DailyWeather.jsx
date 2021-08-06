@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 
 class DailyWeather extends Component {
   constructor(props) {
@@ -23,7 +24,27 @@ class DailyWeather extends Component {
     console.log("FiveDay", this.state.FiveDay);
   };
   render() {
-    return <div></div>;
+    const { FiveDay } = this.state;
+    return (
+      <div>
+        <ul>
+          {FiveDay.length > 0 ? (
+            FiveDay.map((day, index) => (
+              <li key={index}>
+                <p>
+                  sunrise:
+                  <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
+                </p>
+
+                <p>weather:{day.weather[0].description}</p>
+              </li>
+            ))
+          ) : (
+            <li>Loading Forecast</li>
+          )}
+        </ul>
+      </div>
+    );
   }
 }
 
