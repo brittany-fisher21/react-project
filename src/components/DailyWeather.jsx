@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
+import { Cards } from "react-bootstrap";
 
 class DailyWeather extends Component {
   constructor(props) {
@@ -37,6 +38,8 @@ class DailyWeather extends Component {
                 </p>
 
                 <p>weather:{day.weather[0].description}</p>
+                <p>temp:{Math.round(day.temp.day)}</p>
+                <p>feels like: {day.feels_like.day}</p>
               </li>
             ))
           ) : (
