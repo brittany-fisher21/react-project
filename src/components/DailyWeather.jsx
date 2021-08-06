@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import { Cards } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import CardColumns from "react-bootstrap/CardColumns";
 
 class DailyWeather extends Component {
   constructor(props) {
@@ -28,24 +30,32 @@ class DailyWeather extends Component {
     const { FiveDay } = this.state;
     return (
       <div>
-        <ul>
-          {FiveDay.length > 0 ? (
-            FiveDay.map((day, index) => (
-              <li key={index}>
-                <p>
-                  sunrise:
-                  <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
-                </p>
+        {FiveDay.length > 0 ? (
+          FiveDay.map((day, index) => (
+            <CardGroup>
+              <Card.Header>Atlanta</Card.Header>
+              <Card.Body>
+                <Card.Title>Weekly Weather</Card.Title>
+                <Card.Text>
+                  {" "}
+                  Forescast
+                  <Card boarder="info" style={{ width: "50rem" }} key={index}>
+                    <p>
+                      sunrise:
+                      <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
+                    </p>
 
-                <p>weather:{day.weather[0].description}</p>
-                <p>temp:{Math.round(day.temp.day)}</p>
-                <p>feels like: {day.feels_like.day}</p>
-              </li>
-            ))
-          ) : (
-            <li>Loading Forecast</li>
-          )}
-        </ul>
+                    <p>weather:{day.weather[0].description}</p>
+                    <p>temp:{Math.round(day.temp.day)}</p>
+                    <p>feels like: {day.feels_like.day}</p>
+                  </Card>
+                </Card.Text>
+              </Card.Body>
+            </CardGroup>
+          ))
+        ) : (
+          <p>Loading Forecast</p>
+        )}
       </div>
     );
   }
