@@ -41,3 +41,8 @@ body {
   background-image: url("./images/cloudsbackground.jpg");
   background-size: 100%;
 }
+p {
+  color: rgb(49, 48, 48);
+  font-size: larger;
+  font-style: oblique;
+}
