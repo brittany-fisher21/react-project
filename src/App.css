@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.Card.Body {
+  background-color: grey;
+}

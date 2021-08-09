@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import TodaysWeather from "./TodaysWeather";
+import DailyWeather from "./DailyWeather";
 
 class CityForm extends Component {
   constructor(props) {
