@@ -37,6 +37,7 @@
   }
 }
 
-.Card.Body {
-  background-color: grey;
+body {
+  background-image: url("./images/cloudsbackground.jpg");
+  background-size: 100%;
 }
