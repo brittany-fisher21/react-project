@@ -3,15 +3,22 @@ import Moment from "react-moment";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import CardColumns from "react-bootstrap/CardColumns";
+import ReactCardFlip from "react-card-flip";
+import { directiveLiteral } from "@babel/types";
 
 class DailyWeather extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       FiveDay: [],
+      isFlipped: true,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-
+  handleClick(event) {
+    event.preventDefault();
+    this.setState((prevState) => ({ isFlipped: !prevState.isFlipped }));
+  }
   componentDidMount() {
     this._fetchToday();
   }
@@ -32,26 +39,35 @@ class DailyWeather extends Component {
       <div>
         {FiveDay.length > 0 ? (
           FiveDay.map((day, index) => (
-            <CardGroup>
-              <Card.Header>Atlanta</Card.Header>
-              <Card.Body>
-                <Card.Title>Weekly Weather</Card.Title>
-                <Card.Text>
-                  {" "}
-                  Forescast
-                  <Card boarder="info" style={{ width: "50rem" }} key={index}>
-                    <p>
-                      sunrise:
-                      <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
-                    </p>
+            <ReactCardFlip
+              isFlipped={this.state.isFlipped}
+              flipDirection="horizontal"
+            >
+              <div>
+                front of card
+                <button onClick={this.handleClick}>click to flip</button>
+              </div>
+              <CardGroup>
+                <Card.Header>Atlanta</Card.Header>
+                <Card.Body>
+                  <Card.Title>Weekly Weather</Card.Title>
+                  <Card.Text>
+                    {" "}
+                    Forescast
+                    <Card boarder="info" style={{ width: "50rem" }} key={index}>
+                      <p>
+                        sunrise:
+                        <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
+                      </p>
 
-                    <p>weather:{day.weather[0].description}</p>
-                    <p>temp:{Math.round(day.temp.day)}</p>
-                    <p>feels like: {day.feels_like.day}</p>
-                  </Card>
-                </Card.Text>
-              </Card.Body>
-            </CardGroup>
+                      <p>weather:{day.weather[0].description}</p>
+                      <p>temp:{Math.round(day.temp.day)}</p>
+                      <p>feels like: {day.feels_like.day}</p>
+                    </Card>
+                  </Card.Text>
+                </Card.Body>
+              </CardGroup>
+            </ReactCardFlip>
           ))
         ) : (
           <p>Loading Forecast</p>
