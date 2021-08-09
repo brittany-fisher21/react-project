@@ -2,6 +2,8 @@
 
 https://www.npmjs.com/package/react-card-flip
 https://openweathermap.org/api
+https://unsplash.com/
+https://css-tricks.com/guides/
 
 # Getting Started with Create React App
 

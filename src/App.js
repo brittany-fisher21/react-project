@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to the weather app</h1>
+      <h1>Welcome to the Weather App</h1>
       <CityForm />
       <TodaysWeather />
       <DailyWeather />

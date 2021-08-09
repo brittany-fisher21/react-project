@@ -28,11 +28,10 @@ class DailyWeather extends Component {
   render() {
     const { FiveDay } = this.state;
     return (
-      <div>
+      <div class="container">
         {FiveDay.length > 0 ? (
           FiveDay.map((day, index) => (
-            <CardGroup>
-              <Card.Header>Atlanta</Card.Header>
+            <CardGroup align="center">
               <Card.Body>
                 <Card.Title>Weekly Weather</Card.Title>
                 <Card.Text>
@@ -40,13 +39,13 @@ class DailyWeather extends Component {
                   Forescast
                   <Card boarder="info" style={{ width: "50rem" }} key={index}>
                     <p>
-                      sunrise:
+                      Sunrise:
                       <Moment unix date={day.sunrise} format="MM/DD/YYYY" />
                     </p>
 
-                    <p>weather:{day.weather[0].description}</p>
-                    <p>temp:{Math.round(day.temp.day)}</p>
-                    <p>feels like: {day.feels_like.day}</p>
+                    <p>Weather:{day.weather[0].description}</p>
+                    <p>Temp:{Math.round(day.temp.day)}</p>
+                    <p>Feels Like: {day.feels_like.day}</p>
                   </Card>
                 </Card.Text>
               </Card.Body>
